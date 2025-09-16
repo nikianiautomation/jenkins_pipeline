@@ -3,15 +3,24 @@ pipeline {
     stages {
         stage('Upload to S3') {
             steps {
+                sh 'echo "Hello with full S3 Publisher config" > hello.txt'
                 withAWS(credentials: 'niki-s3', region: 'us-east-2') {
-                    sh 'echo "Hello from Jenkins with withAWS" > hello.txt'
-                    s3Upload(
-                        bucket: 'niki-ani1',
-                        file: 'hello.txt',
-                        path: 'hello.txt'
-                    )
-                }
+                s3Upload(
+                    entries: [
+                        [bucket: 'niki-ani1', sourceFile: 'hello.txt', target: 'hello.txt']
+                    ],
+                    userMetadata: [                                         // Required metadata key-value pairs
+                        [key: 'uploadedBy', value: 'jenkins'],
+                        [key: 'buildNumber', value: "${env.BUILD_NUMBER}"]
+                    ],
+                    profileName: 'dev'
+                    dontWaitForConcurrentBuildCompletion: false,          // Boolean, usually false
+                    consoleLogLevel: 'INFO',                               // Options: INFO, WARN, ERROR, DEBUG
+                    pluginFailureResultConstraint: 'FAILURE',             // Action on failure, e.g., FAILURE
+                    dontSetBuildResultOnFailure: false                     // Whether to continue build on failure
+                )
             }
+        }
         }
     }
 }
