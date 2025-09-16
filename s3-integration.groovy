@@ -7,7 +7,8 @@ pipeline {
     
           echo 'calling Repo'
                 sh "git clone https://github.com/nikianiautomation/PROJECT1.git"
-                sh "cd PROJECT1\s3"
+                sh "cd PROJECT1"
+                sh "cd s3"
                 
                 echo 'End'  
           }
