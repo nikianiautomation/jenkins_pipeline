@@ -8,7 +8,7 @@ pipeline {
                     entries: [
                         [bucket: 'niki-ani1', sourceFile: 'hello.txt', target: 'hello.txt']
                     ],
-                    profileName: 'your-aws-profile',                        // AWS CLI config profile name or Jenkins credential name
+                    profileName: 'nikiani',                        // AWS CLI config profile name or Jenkins credential name
                     userMetadata: [                                         // Required metadata key-value pairs
                         [key: 'uploadedBy', value: 'jenkins'],
                         [key: 'buildNumber', value: "${env.BUILD_NUMBER}"]
