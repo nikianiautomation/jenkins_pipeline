@@ -12,7 +12,7 @@
                         steps {
                             script {
                                 sh "pwd"
-                                s3Upload(file: 'artifact.txt', bucket: 'niki-ani3', path: 'artifacts/build-artifacts/artifact.txt')
+                                s3Upload(file: 'artifact.txt', bucket: 'niki-ani1', path: 'artifact.txt')
                             }
                         }
                     }
