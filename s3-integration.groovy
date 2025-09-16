@@ -15,8 +15,8 @@ pipeline {
         }
         stage('Upload to S3') {
             steps {
-               sh "cd PROJECT1"
-                sh "cd s3" 
+               dir('PROJECT1/s3') {
+                sh "pwd"
                 withAWS(credentials: 'niki-s3', region: 'us-east-2') {
                 s3Upload(
                     bucket: 'niki-ani1',
@@ -24,6 +24,7 @@ pipeline {
                     path: 'my-app2/'
                 )
             }
+               }
         }
         }
     }
