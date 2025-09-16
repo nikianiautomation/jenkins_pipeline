@@ -7,15 +7,15 @@ pipeline {
     
           echo 'calling Repo'
                 sh "git clone https://github.com/nikianiautomation/PROJECT1.git"
-                sh "cd PROJECT1"
-                sh "cd s3"
+                
                 
                 echo 'End'  
           }
         }
         stage('Upload to S3') {
             steps {
-                
+               sh "cd PROJECT1"
+                sh "cd s3" 
                 withAWS(credentials: 'niki-s3', region: 'us-east-2') {
                 s3Upload(
                     bucket: 'niki-ani1',
