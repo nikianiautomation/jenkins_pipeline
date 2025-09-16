@@ -4,7 +4,6 @@ pipeline {
         stage('Upload to S3') {
             steps {
                 sh 'echo "Hello with full S3 Publisher config" > hello.txt'
-                withAWS(credentials: 'niki-s3', region: 'us-east-2') {
                 s3Upload(
                     entries: [
                         [bucket: 'niki-ani1', sourceFile: 'hello.txt', target: 'hello.txt']
@@ -19,7 +18,6 @@ pipeline {
                     pluginFailureResultConstraint: 'FAILURE',             // Action on failure, e.g., FAILURE
                     dontSetBuildResultOnFailure: false                     // Whether to continue build on failure
                 )
-            }
         }
         }
     }
