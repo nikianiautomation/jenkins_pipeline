@@ -4,11 +4,11 @@ pipeline {
         stage('Upload to S3') {
             steps {
                 sh 'echo "Hello with full S3 Publisher config" > hello.txt'
+                withAWS(credentials: 'niki-s3', region: 'us-east-2') {
                 s3Upload(
                     entries: [
                         [bucket: 'niki-ani1', sourceFile: 'hello.txt', target: 'hello.txt']
                     ],
-                    profileName: 'nikiani',                        // AWS CLI config profile name or Jenkins credential name
                     userMetadata: [                                         // Required metadata key-value pairs
                         [key: 'uploadedBy', value: 'jenkins'],
                         [key: 'buildNumber', value: "${env.BUILD_NUMBER}"]
@@ -19,6 +19,7 @@ pipeline {
                     dontSetBuildResultOnFailure: false                     // Whether to continue build on failure
                 )
             }
+        }
         }
     }
 }
