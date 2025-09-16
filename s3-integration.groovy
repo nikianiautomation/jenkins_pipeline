@@ -11,7 +11,7 @@
                 stage("Upload") {
                   steps {
                     withAWS(region: "us-east-2", credentials: "AKIA6HMLXTAQUBOYVI4Y"){
-                      s3Upload(bucket: "niki-ani1",entries: [[file: "artifact.txt", s3Prefix: "artifact/path/"]])
+                      s3Upload(bucket: "niki-ani1", entries: [[file: "artifact.txt", s3Prefix: "artifact/path/"]])
                     }
                   }
                 }
