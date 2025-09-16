@@ -13,7 +13,7 @@ pipeline {
                         [key: 'uploadedBy', value: 'jenkins'],
                         [key: 'buildNumber', value: "${env.BUILD_NUMBER}"]
                     ],
-                    profileName: 'dev'
+                    profileName: 'AWS_DEFAULT_PROFILE',
                     dontWaitForConcurrentBuildCompletion: false,          // Boolean, usually false
                     consoleLogLevel: 'INFO',                               // Options: INFO, WARN, ERROR, DEBUG
                     pluginFailureResultConstraint: 'FAILURE',             // Action on failure, e.g., FAILURE
