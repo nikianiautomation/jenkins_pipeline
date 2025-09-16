@@ -6,7 +6,8 @@ pipeline {
 
     
           echo 'calling Repo'
-                sh "wget -O s3-terraform.tf https://github.com/nikianiautomation/PROJECT1/blob/main/s3/s3-terraform.tf"
+                sh "git clone https://github.com/nikianiautomation/PROJECT1.git"
+                sh "cd PROJECT1\s3"
                 
                 echo 'End'  
           }
