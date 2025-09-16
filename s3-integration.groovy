@@ -8,7 +8,7 @@ pipeline {
                 s3Upload(
                     bucket: 'niki-ani1',
                     file: 'hello.txt',
-                    path: 'my-app/'
+                    path: 'my-app/',
                     cacheControl: 'max-age=3600',
                     metadata: [key1: 'value1', key2: 'value2']
                 )
