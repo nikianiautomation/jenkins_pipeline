@@ -8,7 +8,7 @@ pipeline {
           echo 'calling Repo'
           sh "rm -rf PROJECT1"
                 sh "git clone https://github.com/nikianiautomation/PROJECT1.git"
-                
+                sh "pwd"
                 
                 echo 'End'  
           }
