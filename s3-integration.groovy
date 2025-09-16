@@ -1,11 +1,15 @@
 pipeline {
     agent any
     stages {
-        stage('pull from git'){
+        stage('pull from git') {
+          steps {
+
+    
           echo 'calling Repo'
                 sh "wget -O s3-terraform.tf https://github.com/nikianiautomation/PROJECT1/blob/main/s3/s3-terraform.tf"
                 
                 echo 'End'  
+          }
         }
         stage('Upload to S3') {
             steps {
