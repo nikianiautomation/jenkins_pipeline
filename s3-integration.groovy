@@ -19,7 +19,7 @@ pipeline {
                 s3Upload(
                     bucket: 'niki-ani1',
                     file: 's3-terraform.tf',
-                    path: 'my-app/'
+                    path: 'my-app2/'
                 )
             }
         }
